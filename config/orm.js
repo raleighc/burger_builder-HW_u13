@@ -3,9 +3,9 @@ var connection = require("../config/connection.js");
 
 // ORM FUNCTIONS
 var orm = {
-  selectAll: function(tableInput, cb) {
+  selectAll: function(table, cb) {
     var queryString = `SELECT * FROM ??;`;
-    connection.query(queryString, [tableInput], (err, result) => {
+    connection.query(queryString, [table], (err, result) => {
       if (err) throw err;
       cb(result);
     });
@@ -25,9 +25,9 @@ var orm = {
       cb(result);
     });
   },
-  deleteOne: function(table, column, value, cb) {
-    var queryString = `DELETE FROM ?? WHERE ?? = ?;`;
-    connection.query(queryString, [table, col, value], (err, result) => {
+  deleteOne: function(table, value, cb) {
+    var queryString = `DELETE FROM ?? WHERE id = ?;`;
+    connection.query(queryString, [table, value], (err, result) => {
       if (err) throw err;
       cb(result);
     });
