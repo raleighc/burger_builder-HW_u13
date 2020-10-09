@@ -19,6 +19,7 @@ var orm = {
       cb(result);
     });
   },
+
   updateOne: function(table, column, objColVals, condition, cb) {
     var queryString = 'UPDATE ?? SET ?? = ? WHERE ' + condition;
     connection.query(queryString, [table, column, objColVals], (err, result) => {
@@ -26,6 +27,7 @@ var orm = {
       cb(result);
     });
   },
+
   deleteOne: function(table, value, cb) {
     var queryString = `DELETE FROM ?? WHERE id = ?;`;
     connection.query(queryString, [table, value], (err, result) => {
@@ -33,6 +35,7 @@ var orm = {
       cb(result);
     });
   }
+  
 };
 
 // Export the orm object for the model (cat.js).
