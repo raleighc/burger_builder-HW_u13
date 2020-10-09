@@ -1,5 +1,6 @@
 body {
-  align-content: center;
+  text-align: center;
+  padding: 30px;
   background-color: rgb(164, 173, 82);
 }
 
@@ -7,7 +8,8 @@ li {
     
     padding: 5px;
     margin: 5px;
-    background: #faebd7;
+    background: #5d89a3;
+    border-radius: 15px;
   }
   
   .label {
@@ -19,7 +21,7 @@ li {
  
     padding: 5px;
     margin: 5px;
-    background: aqua;
+    background: rgb(72, 129, 129);
   }
   
   .form-group {

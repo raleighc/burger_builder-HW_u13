@@ -1,6 +1,7 @@
 // MySQL connection.
 var connection = require("../config/connection.js");
 
+
 // ORM FUNCTIONS
 var orm = {
   selectAll: function(table, cb) {
