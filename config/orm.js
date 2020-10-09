@@ -12,15 +12,15 @@ var orm = {
   },
 
   insertOne: function(table, column, value, cb) {
-    var queryString = `INSERT INTO ?? (??) VALUES (??)`;
-    connection.query(queryString, [table, column, value], (err, result) => {
+    var queryString = 'INSERT INTO ' + table + ' (' + column.toString() + ') VALUES (?,0)';
+    connection.query(queryString, value, (err, result) => {
       if (err) throw err;
       cb(result);
     });
   },
   updateOne: function(table, column, objColVals, condition, cb) {
-    var queryString = `UPDATE ?? SET ?? = ? WHERE id = ?;`;
-    connection.query(queryString, [table, column, objColVals, condition], (err, result) => {
+    var queryString = 'UPDATE ?? SET ?? = ? WHERE ' + condition;
+    connection.query(queryString, [table, column, objColVals], (err, result) => {
       if (err) throw err;
       cb(result);
     });

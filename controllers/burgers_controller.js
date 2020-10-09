@@ -17,12 +17,11 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  console.log(req);
-  console.log(res);
-  burger.insertOne([
-    "burger_name", "devoured"
-  ], [
-    req.body.name, req.body.devoured
+  // console.log(req);
+  // console.log(res);
+  burger.insertOne(
+  [
+    req.body.burger_name, 0
   ], function(result) {
     // Send back the ID of the new quote
     console.log(result)
@@ -34,10 +33,9 @@ router.put("/api/burgers/:id", function(req, res) {
   var value = "id = " + req.params.id;
 
   console.log("value", value);
-
-  burger.updateOne({
-    devour: req.body.devour
-  }, value, function(result) {
+  console.log(req.body);
+  burger.updateOne(
+    req.body.hungry, value, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
@@ -48,7 +46,7 @@ router.put("/api/burgers/:id", function(req, res) {
 });
 
 router.delete("/api/burgers/:id", function(req, res) {
-  var value = "id = " + req.params.id;
+  var value = req.params.id;
 
   burger.deleteOne(value, function(result) {
     if (result.affectedRows == 0) {

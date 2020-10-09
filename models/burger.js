@@ -9,7 +9,7 @@ var burger = {
   },
   // The variables cols and vals are arrays.
   insertOne: function(value, cb) {
-    orm.insertOne("burgers", "burger_name", value, function(res) {
+    orm.insertOne("burgers", ["burger_name", "devoured"], value, function(res) {
       cb(res);
     });
   },
