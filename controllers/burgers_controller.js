@@ -11,29 +11,32 @@ router.get("/", function(req, res) {
     var hbsObject = {
       burgers: data
     };
-    console.log(hbsObject);
+    // console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
 
 router.post("/api/burgers", function(req, res) {
+  console.log(req);
+  console.log(res);
   burger.insertOne([
-    "name", "devoured"
+    "burger_name", "devoured"
   ], [
     req.body.name, req.body.devoured
   ], function(result) {
     // Send back the ID of the new quote
+    console.log(result)
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
   var value = "id = " + req.params.id;
 
   console.log("value", value);
 
   burger.updateOne({
-    devoured: req.body.devoured
+    devour: req.body.devour
   }, value, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
